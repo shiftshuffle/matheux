@@ -1,0 +1,73 @@
+<div class="article-information">
+  <section class="info">
+
+
+
+
+<div class="container">
+  <div class="row">
+
+
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div ng-repeat="g in posts" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 artists">
+              <div class = "well artists-artist" ng-mouseover="mouseOver(g.img_preview)" ng-init="mouseOver('jong1.png')">
+                <a href="#/{{g.id}}">
+                    <figure style="background-image:url(img/{{g.img_preview}});"></figure>
+                  <h5>{{g.first_name}} <strong style="color: black;">{{g.last_name}}</strong></h5>
+                </a>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="artists-preview" style="background-image:url(img/{{img_preview}});">
+            <!--<a href="#">
+
+              <img ng-src="img/{{img_preview}}" class="img-responsive center-block" style="width:400px;">
+              <h3>Asdf</h3>
+
+            </a>
+            -->
+          </div>
+        </div>
+
+    </div>
+
+
+
+    </section>
+
+
+    <div class="info">
+      <section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+              <figure class="author-bio">
+              <img class="bio-image" src="img/2.jpg" />
+
+
+              <figcaption class="bio-text"> "La pensée n'est qu'un écliar au milieu d'une longue nuit. Mais c'est cet éclair qui est tout." <br /><br />
+              "Thought is only a flash in the middle of a long night. But this flash means everything. " <br /><br />
+              - Henri Poincaré
+              </figcaption>
+              </figure>
+              <hr>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</section>
+
+
+
+</div>

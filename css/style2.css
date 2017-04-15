@@ -1,0 +1,1270 @@
+ div.cell {
+  border: 1px solid transparent;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: thin;
+  border-style: solid;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+}
+div.cell.selected {
+  border-color: #ababab;
+  /* Don't border the cells when printing */
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: green;
+  /* Don't border the cells when printing */
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+
+div.inner_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+        
+        
+       @font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+}
+
+#notebook_panel { /* main background */
+    background: rgb(245,245,245);
+}
+
+div.cell { /* set cell width */
+    width: 750px;
+}
+
+div #notebook { /* centre the content */
+    background: #fff; /* white background for content */
+    width: 1000px;
+    margin: auto;
+    padding-left: 0em;
+}
+
+#notebook li { /* More space between bullet points */
+    margin-top:0.8em;
+}
+
+/* draw border around running cells */
+div.cell.border-box-sizing.code_cell.running { 
+    border: 1px solid #111;
+}
+
+/* Put a solid color box around each cell and its output, visually linking them*/
+div.cell.code_cell {
+    background-color: rgb(256,256,256); 
+    border-radius: 0px; 
+    padding: 0.5em;
+    margin-left:1em;
+    margin-top: 1em;
+}
+
+div.text_cell_render{
+    font-family: 'Alegreya Sans' sans-serif;
+    line-height: 140%;
+    /*font-size: 125%;*/
+    font-weight: 400;
+    width:600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+/* Formatting for header cells */
+.text_cell_render h1 {
+    font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-style:regular;
+    font-weight: 400;    
+    font-size: 35pt;
+    line-height: 100%;
+    color: rgb(0,51,102);
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    display: block;
+}
+
+.text_cell_render h2 {
+    font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 400;
+    font-size: 20pt;
+    line-height: 100%;
+    color: rgb(0,51,102);
+    margin-bottom: 0.1em;
+    margin-top: 0.3em;
+    display: block;
+}   
+
+.text_cell_render h3 {
+    font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    margin-top:16px;
+    font-size: 18pt;
+    /*font-weight: 600;*/
+    margin-bottom: 3px;
+    font-style: regular;
+    /*color: rgb(102,102,0);*/
+}
+
+.text_cell_render h4 {    /*Use this for captions*/
+    font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 14pt;
+    text-align: center;
+    margin-top: 0em;
+    margin-bottom: 2em;
+    font-style: regular;
+}
+
+.text_cell_render h5 {  /*Use this for small titles*/
+    font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 400;
+    font-size: 16pt;
+    color: rgb(163,0,0);
+    font-style: italic;
+    margin-bottom: .1em;
+    margin-top: 0.8em;
+    display: block;
+}
+
+.text_cell_render h6 { /*use this for copyright note*/
+    font-family: 'PT Mono', sans-serif;
+    font-weight: 300;
+    font-size: 9pt;
+    line-height: 100%;
+    color: grey;
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.CodeMirror{
+    font-family: "Source Code Pro";
+    font-size: 90%;
+}
+
+.alert-box {
+    padding:10px 10px 10px 36px;
+    margin:5px;
+}
+
+.success {
+    color:#666600;
+    background:rgb(240,242,229);
+}
+    </style>
+
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+body {
+  overflow: visible;
+  padding: 8px;
+}
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
+}
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+}
+    
+    div.input_prompt {
+  color: navy;
+  border-top: 1px solid transparent;
+  font-size: 13pt;
+  /*visibility: hidden;*/
+}
+        
+div.output_prompt {
+  color: darkred;
+  font-size: 13pt;
+  /*visibility: hidden;*/
+
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+
+ 
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+ 
+}
+        
+        
+        
+    .highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+.lower label:hover,
+.overlay label {
+    cursor: pointer
+}
+a.moretag,
+h2 a {
+    text-decoration: none
+}
+.clear,
+.clearfix {
+    clear: both
+}
+.author-bio,
+footer {
+    box-sizing: border-box
+}
+.overlay ul {
+    list-style: none
+}
+#mainmenu,
+#mainmenu li,
+#site-title,
+.lower label,
+.overlay ul li a {
+    text-transform: uppercase
+}
+#copyright,
+#nav-below,
+#nav-below a,
+.footer-column,
+.lower label,
+.overlay nav,
+.post-heading h1,
+td {
+    text-align: center
+}
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var{
+    font: inherit;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    vertical-align: baseline
+}
+.hljs-class .hljs-title:last-child,
+.hljs-emphasis,
+.hljs-strongemphasis,
+em {
+    font-style: italic
+}
+body,
+button,
+input,
+select,
+textarea {
+    font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #3A3B3C;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0
+}
+blockquote,
+q {
+    quotes: none
+}
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: '';
+    content: none
+}
+aside,
+details,
+figcaption,
+figure,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word
+}
+.alignright {
+    float: right
+}
+.alignleft {
+    float: left
+}
+h1,
+h2,
+h3 {
+    letter-spacing: -.01em;
+    word-spacing: .02em
+}
+h1,
+h1 a,
+h2,
+h2 a,
+h3,
+h3 a {
+    font-weight: 400
+}
+b,
+strong {
+    font-weight: 400
+}
+h1 {
+    font-size: 2.2em
+}
+h2 {
+    font-size: 1.7em
+}
+h2 a {
+    color: inherit
+}
+h3,
+legend {
+    font-size: 1.37em
+}
+h5 {
+    font-size: 1.03em
+}
+h6 {
+    font-size: .95em
+}
+mark {
+    background: #FDFFB6
+}
+abbr[title] {
+    border-bottom: 1px dotted #D1D1D1
+}
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: .5em 10px;
+    quotes: "\201C""\201D""\2018""\2019"
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: .1em;
+    margin-right: .25em;
+    vertical-align: -.4em
+}
+blockquote p {
+    display: inline
+}
+hr {
+    border: 0;
+    border-bottom: 1px solid #D1D1D1;
+    margin-top: 3.125rem;
+    margin-bottom: 3.125rem
+}
+.post-title {
+    margin-top: 80px
+}
+.post-date {
+    color: #7A7B7C;
+    font-size: .778em
+}
+a.moretag {
+    font-weight: 400
+}
+a.moretag,
+a.moretag:visited {
+    color: #009DDC;
+    border-bottom: 1px solid transparent
+}
+a.moretag:hover {
+    text-decoration: underline
+}
+.smallcode {
+    font-family: monospace;
+    padding: .25em .5em;
+    font-size: inherit;
+    border-radius: 3px;
+    background-color: #e5e5e5;
+    white-space: nowrap;
+    color: #c7254e
+}
+#branding,
+#mainmenu li,
+#site-title a {
+    font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+}
+article p {
+    margin: 1.5rem 0;
+    color: inherit
+}
+#content {
+    width: 700px;
+    margin: 0 auto 60px
+}
+footer {
+    width: 100%;
+    padding: 20px
+}
+#footer-container {
+    width: 1000px;
+    margin: 0 auto
+}
+.footer-column {
+    width: 30%;
+    float: left;
+    color: #7A7B7C;
+    padding: 0 1%;
+    font-size: .85em
+}
+#nav-below,
+.header {
+    width: 100%;
+    position: relative
+}
+footer .menu-item a {
+    color: #7A7B7C;
+    text-decoration: none;
+    font-weight: 300
+}
+#mainmenu li,
+#nav-below a {
+    display: inline-block;
+    font-weight: 400;
+    cursor: pointer
+}
+footer .menu-item a:hover {
+    color: #fff;
+    text-decoration: underline
+}
+#mainmenu a,
+#nav-below a,
+#site-title a,
+.overlay ul li a {
+    text-decoration: none
+}
+
+iframe {
+    width: 100%;
+    min-height: 300px;
+}
+
+#branding {
+    margin: 0 auto;
+    height: 80px;
+    max-width: 1000px;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+#site-title {
+    margin-top: 25px;
+    float: left
+}
+#site-title a {
+    font-size: 1.2em;
+    color: #fff
+}
+#mainmenu {
+    margin-top: 35px;
+    float: right
+}
+#mainmenu a {
+    color: #fff
+}
+#mainmenu a:hover {
+    border-bottom: 1px solid #fff
+}
+#mainmenu li {
+    float: left;
+    margin-right: 5px;
+    vertical-align: top;
+    font-size: .667em;
+    margin-left: 24px
+}
+.header {
+    height: 500px;
+    margin-bottom: 60px
+}
+.divider {
+    margin-bottom: -30px;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0))
+}
+#nav-below {
+    font-size: .875em;
+    margin: 90px 0 75px
+}
+#nav-below a {
+    width: 80%;
+    color: #fff;
+    border: 1px solid #5bb141;
+    text-shadow: 0 1px 1px #5bb141;
+    background: #6cbf52;
+    border-radius: 2px;
+    padding: 12px 18px;
+    margin-bottom: 30px
+}
+#nav-below a,
+#nav-below span {
+    vertical-align: middle;
+    font-size: .889em
+}
+#nav-below a:hover {
+    background: #5bb141
+}
+.pagination {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 40px;
+    left: 45%
+}
+.older {
+    float: left
+}
+.newer {
+    float: right
+}
+.post-heading {
+    height: 350px;
+    width: 50%;
+    margin-left: 25%;
+    display: table;
+    z-index: 1
+}
+.post-heading h1 {
+    font-size: 2.2em;
+    font-weight: 400;
+    color: #fff;
+    display: table-cell;
+    vertical-align: middle
+}
+.lower,
+input {
+    /*display: none*/
+}
+
+input#op {
+    display: none; 
+ }
+ 
+.author-bio {
+    margin: 40px 0;
+    width: 100%;
+    border: 1px solid #D1D1D1;
+    border-radius: 2px;
+    padding: 1.5em
+}
+.bio-image {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    margin-right: 1.2em;
+    margin-top: .4em;
+    vertical-align: middle;
+    float: left
+}
+.bio-text {
+    font-size: .778em;
+    color: #3A3B3C;
+    overflow: hidden
+}
+figure strong {
+    font-size: .85em
+}
+#mainmenu .current-menu-item a {
+    border-bottom: 1px #fff solid
+}
+img {
+    max-width: 100%;
+    height: auto
+}
+article img {
+    box-shadow: 0 0 15px rgba(0, 0, 0, .35)
+}
+.lower {
+    float: right;
+    margin-top: 28px;
+    border: 1px solid #fff;
+    padding: 0 .85em;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 400;
+    line-height: 25px
+}
+.lower:hover {
+    background: #fff;
+    color: #008BC3
+}
+.lower label {
+    font-family: inherit;
+    font-size: .7em
+}
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .9)
+}
+.overlay label {
+    width: 58px;
+    height: 58px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: url(../img/cross.png);
+    z-index: 100
+}
+.overlay nav {
+    position: relative;
+    top: 50%;
+    height: 60%;
+    font-size: 54px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+.overlay ul {
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    height: 100%;
+    position: relative
+}
+.overlay ul li {
+    display: block;
+    height: 20%;
+    height: calc(100% / 5);
+    min-height: 54px
+}
+.overlay ul li a {
+    font-weight: 300;
+    display: block;
+    color: #fff;
+    -webkit-transition: color .05s;
+    transition: color .05s;
+    font-family: inherit;
+    margin-top: 20px
+}
+.hljs-strong,
+.hljs-strongemphasis,
+th {
+    font-weight: 700
+}
+.overlay ul li a:focus,
+.overlay ul li a:hover {
+    color: #849368
+}
+.lower~.overlay-hugeinc {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity .05s, visibility 0s .05s;
+    transition: opacity .05s, visibility 0s .05s
+}
+#op:checked~.overlay-hugeinc {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity .05s;
+    transition: opacity .05s
+}
+.overlay-hugeinc nav {
+    -moz-perspective: 300px
+}
+.overlay-hugeinc nav ul {
+    opacity: .4;
+    -webkit-transform: translateY(-25%) rotateX(35deg);
+    transform: translateY(-25%) rotateX(35deg);
+    -webkit-transition: -webkit-transform .25s, opacity .25s;
+    transition: transform .25s, opacity .25s
+}
+#op:checked~.overlay-hugeinc nav ul {
+    opacity: 1;
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    display: block
+}
+#op:not(:checked)~.overlay-hugeinc nav ul {
+    -webkit-transform: translateY(25%) rotateX(-35deg);
+    transform: translateY(25%) rotateX(-35deg);
+    display: block
+}
+.share-icons-body svg:hover,
+.share-icons-header svg:hover {
+    transform: scale(1.25)
+}
+.share-icons-header svg {
+    width: 30px;
+    height: 30px;
+    fill: #fff
+}
+.share-icons-footer svg {
+    width: 30px;
+    height: 30px;
+    fill: #7A7B7C;
+    margin-right: 5px
+}
+.share-icons-footer svg:hover {
+    transform: scale(1.25);
+    fill: #fff
+}
+.share-icons-body svg {
+    width: 30px;
+    height: 30px;
+    fill: #009DDC;
+    float: left;
+    margin-right: 5px
+}
+#copyright {
+    width: 100%;
+    color: #7A7B7C;
+    font-family: inherit;
+    font-size: .65em;
+    margin-top: 40px;
+    padding-bottom: 40px
+}
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+td,
+th {
+    padding: 3px;
+    border: 1px solid transparent;
+    height: 30px;
+    transition: all .3s
+}
+th {
+    background: #DFDFDF
+}
+td {
+    background: #FAFAFA
+}
+tr:nth-child(even) td {
+    background: #F1F1F1
+}
+tr:nth-child(odd) td {
+    background: #FEFEFE
+}
+tr td:hover {
+    background: #069;
+    color: #FFF
+}
+.hljs {
+    display: block;
+    padding: .5em;
+    background: #23241f
+}
+.css .hljs-function .hljs-preprocessor,
+.css .hljs-rules,
+.css .hljs-value,
+.hljs,
+.hljs-pragma,
+.hljs-tag {
+    color: #f8f8f2
+}
+.hljs-emphasis,
+.hljs-strong,
+.hljs-strongemphasis {
+    color: #a8a8a2
+}
+.alias .hljs-keyword,
+.hljs-blockquote,
+.hljs-bullet,
+.hljs-hexcolor,
+.hljs-horizontal_rule,
+.hljs-literal,
+.hljs-number,
+.hljs-regexp {
+    color: #ae81ff
+}
+.css .hljs-class,
+.hljs-class .hljs-title:last-child,
+.hljs-code,
+.hljs-tag .hljs-value,
+.hljs-title {
+    color: #a6e22e
+}
+.hljs-link_url {
+    font-size: 80%
+}
+.alias .hljs-keyword:first-child,
+.clojure .hljs-built_in,
+.css .hljs-important,
+.css .hljs-tag,
+.css .unit,
+.hljs-attribute,
+.hljs-change,
+.hljs-flow,
+.hljs-function,
+.hljs-header,
+.hljs-keyword,
+.hljs-symbol,
+.hljs-symbol .hljs-string,
+.hljs-tag .hljs-title,
+.hljs-value,
+.hljs-winutils,
+.lisp .hljs-title,
+.nginx .hljs-title,
+.tex .hljs-special {
+    color: #F92672
+}
+.css .hljs-attribute,
+.hljs-class .hljs-keyword:first-child,
+.hljs-constant,
+.hljs-function .hljs-keyword {
+    color: #66d9ef
+}
+.hljs-class .hljs-title,
+.hljs-params,
+.hljs-variable {
+    color: #f8f8f2
+}
+.apache .hljs-cbracket,
+.apache .hljs-tag,
+.css .hljs-id,
+.django .hljs-filter .hljs-argument,
+.django .hljs-template_tag,
+.django .hljs-variable,
+.haskell .hljs-type,
+.hljs-addition,
+.hljs-attr_selector,
+.hljs-built_in,
+.hljs-envvar,
+.hljs-link_label,
+.hljs-link_url,
+.hljs-prompt,
+.hljs-pseudo,
+.hljs-stream,
+.hljs-string,
+.hljs-subst,
+.ruby .hljs-class .hljs-parent,
+.smalltalk .hljs-array,
+.smalltalk .hljs-class,
+.smalltalk .hljs-localvars,
+.sql .hljs-aggregate,
+.tex .hljs-command {
+    color: #e6db74
+}
+.apache .hljs-sqbracket,
+.hljs-comment,
+.hljs-deletion,
+.hljs-doctype,
+.hljs-javadoc,
+.hljs-pi,
+.hljs-shebang,
+.hljs-template_comment,
+.java .hljs-annotation,
+.python .hljs-decorator,
+.tex .hljs-formula {
+    color: #75715e
+}
+.coffeescript .javascript,
+.javascript .xml,
+.php .xml,
+.tex .hljs-formula,
+.xml .css,
+.xml .hljs-cdata,
+.xml .javascript,
+.xml .php,
+.xml .vbscript {
+    opacity: .5;
+}
+@media (max-width: 1000px) {
+    #footer-container {
+        width: 95%;
+        text-align: center;
+    }
+}
+@media (max-width: 700px) {
+    iframe {
+        width: 100%;
+        min-height: 250px;
+    }
+    .post-heading h1,
+    h2 {
+        font-size: 1.2em;
+    }
+    #branding,
+    #content {
+        padding: 0 5%;
+        box-sizing: border-box;
+    }
+    #content {
+        width: 100%;
+    }
+    .header {
+        height: 300px;
+    }
+    .lower {
+        display: block;
+    }
+    #mainmenu,
+    .pagination {
+        display: none;
+    }
+    .post-heading {
+        height: 180px;
+        width: 50%;
+        margin-top: -1%;
+        margin-left: 25%;
+        display: table;
+    }
+    #branding,
+    .footer-column {
+        width: 100%;
+    }
+    .share-icons-header svg {
+        margin-right: 5px;
+    }
+    .share-icons-body svg {
+        margin-right: 10px;
+    }
+    #nav-below {
+        margin-bottom: 30px;
+    }
+    article p {
+        font-size: .95em;
+    }
+}
+
+
+////////////////////////////////////////////////////////////
+
+/*
+          header {
+    position: relative;
+    overflow: hidden;
+    width:100vw;
+    height:100vh;
+    max-height:100vh;
+    text-align:center;
+}
+
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
+
+
+@media screen and (max-width: 500px) { 
+  div{width:70%;} 
+}
+@media screen and (max-device-width: 800px) {
+  html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  #bgvid { display: none; }
+}
+*/
+////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////
+        
+        .video-container {
+  position: absolute
+  /*top: 0;*/
+ /* bottom: 0;*/
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+}
+
+.video-container video {
+  /* Make video to at least 100% wide and tall */
+  min-width: 50%; 
+  min-height: 90%; 
+  
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+  
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+////////////////////////////////////////

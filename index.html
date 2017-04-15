@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html ng-app="generalApp">
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Matheux</title>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+
+  <!-- Mathjax -->
+  <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+  <script type="text/javascript" src="js/mathjax2.js"></script>
+
+   <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+       tex2jax: {
+           inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+           displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+           processEscapes: true,
+           processEnvironments: true
+       },
+
+
+
+       "HTML-CSS": {
+         styles: {'.MathJax_Display': {"margin": 0}},
+
+                  linebreaks: {
+
+         automatic: true
+
+         },
+
+         scale: 85,
+
+         preferredFont: "TeX",
+
+         mtextFontInherit: true,
+
+         matchFontHeight: true
+
+
+
+
+       },
+        config: ["MMLorHTML.js"],
+ jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML", "output/PreviewHTML"],
+ extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+ }
+
+   });
+
+
+
+//  MathJax.Hub.Config({
+//      tex2jax: {
+//          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+//          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+//          processEscapes: true,
+//          processEnvironments: true
+//      },
+//
+//
+//
+//      "HTML-CSS": {
+//          styles: {'.MathJax_Display': {"margin": 0}},
+//
+//          linebreaks: {
+//
+// automatic: true
+//
+// },
+//
+// scale: 85,
+//
+// preferredFont: "TeX",
+//
+// mtextFontInherit: true,
+//
+// matchFontHeight: true
+//
+//
+//
+//      },
+//
+//       config: ["MMLorHTML.js"],
+// jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML", "output/PreviewHTML"],
+// extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js","MatchWebFonts.js"],
+//
+//
+// MatchWebFonts: {
+//
+// matchFor: {
+//
+// "HTML-CSS": true,
+//
+// NativeMML: false,
+//
+// SVG: false
+//
+// },
+//
+// fontCheckDelay: 20000,
+//
+// fontCheckTimeout: 300 * 1000
+//
+// },
+// TeX: {
+//  extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+// }
+//
+//  });
+
+   </script>
+
+
+
+<link rel="stylesheet" href="css/style2.css" />
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+-->
+
+
+<!-- Angular -->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+
+<!--
+<script src="bower_components/angular-route/angular-route.js"></script>
+-->
+
+<script src="js/angular-load.min.js"></script>
+
+<script src="js/ocLazyLoad.js"></script>
+
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/modules/ocLazyLoad.core.js"> -->
+
+</script>
+
+
+<script src="js/angular-route.min.js"></script>
+
+
+<!-- Flickity -->
+<link rel="stylesheet" href="vendors/flickity/flickity.css" media="screen">
+<script src="vendors/flickity/flickity.pkgd.min.js"></script>
+<!-- end Flickity -->
+
+<!-- flickity angular-->
+<script src="https://rawgit.com/benjamincharity/angular-flickity/master/dist/angular-flickity.js"></script>
+<!-- end flickity angular-->
+
+
+
+    <script>
+      var generalApp = angular.module('generalApp', ['ngRoute','bc.Flickity','oc.lazyLoad']);
+
+
+
+
+
+
+      generalApp.config(function($routeProvider) {
+          $routeProvider
+          .when("/", {
+              templateUrl : "home.html"
+          })
+          .when("/posts", {
+              templateUrl : "posts.html",
+              controller  : "postsCtrl"
+          })
+          .when("/about", {
+              templateUrl : "about.html"
+          })
+          .when("/contact", {
+              templateUrl : "contact.html"
+          })
+
+          .when("/1", {
+              templateUrl : "1.html",
+              controller  : "page1Ctrl",
+
+          })
+          .when("/2", {
+              templateUrl : "2.html",
+              controller  : "page2Ctrl",
+
+          })
+          .when("/3", {
+              templateUrl : "3.html",
+              controller  : "page3Ctrl",
+
+          })
+
+      });
+
+
+
+
+
+
+
+      generalApp.controller('generalCtrl', function ($scope,$document, FlickityService,$location, $http,$rootScope,$route){
+
+
+
+        $http.get('js/artists.json').success(function(data) {
+          $scope.general = data;
+          //console.log(data);
+          $scope.mouseOver = function (p) {
+          $scope.img_preview = p;
+       };
+
+       $scope.isActive = function(destination){
+		return destination === $location.path();
+	};
+
+
+
+
+    $scope.flickityOptions = {
+        cellSelector: '.demo__slide',
+        resize: true,
+        setGallerySize: false,
+        friction: .8,
+        selectedAttraction: .1,
+        wrapAround: true,
+        imagesLoaded: true
+    };
+
+    // // Get the element that should hold the slider
+    // const element = angular.element($document[0].getElementById("demo3"));
+    // const instanceId = element[0].id;
+    //
+    // // Initialize the slider
+    // //
+    // // N: Anytime you are dealing with the DOM from inside a controller (yuck) make sure
+    // // to use document.ready. This ensures that the element you are looking for actually
+    // // exists. You can also use a $timeout but I find using document.ready more accurately
+    // // represents the intention.
+    // angular.element($document[0]).ready(() => {
+    //
+    //     // Initialize our Flickity instance
+    //     FlickityService.create(element[0], instanceId);
+    //
+    // });
+    //
+    // $scope.$on('$destroy', function() {
+    //     console.log('destroying page 1');
+    //     FlickityService.destroy(instanceId);
+    // });
+
+    const settle = $rootScope.$on('Flickity:demoId:settle', (event, data) => {
+        //console.log('Flickity just settled!');
+    });
+
+
+        });
+      });
+
+      generalApp.controller('postsCtrl', function ($scope,$document,$location, $http){
+        $http.get('js/posts.json').success(function(data) {
+          $scope.posts = data;
+          //console.log(data);
+          $scope.mouseOver = function (p) {
+          $scope.img_preview = p;
+       };
+
+       $scope.isActive = function(destination){
+		return destination === $location.path();
+	};
+
+});
+});
+
+
+
+
+      generalApp.controller('page1Ctrl', function ($scope, FlickityService,$rootScope){
+
+          $scope.slides = [
+
+
+            'img/1/domainc/adasdf.png',
+            'img/1/domainc/jnjnjnjn.png',
+            // 'img/1/domainc/adfg.png',
+            'img/1/domainc/adfsd.png',
+            'img/1/domainc/adjlij.png',
+            // 'img/1/domainc/aisdnfiasfdn.png',
+            'img/1/domainc/asdadsf.png',
+            'img/1/domainc/asdfa.png',
+            // 'img/1/domainc/asdfad.png',
+            // 'img/1/domainc/asdfaf.png',
+            'img/1/domainc/asdfasd.png',
+            'img/1/domainc/asdfasdfa.png',
+            'img/1/domainc/asdffa.png',
+            'img/1/domainc/asdfgsdfa.png',
+            'img/1/domainc/dgssdf.png',
+            'img/1/domainc/dsdf.png',
+            // 'img/1/domainc/fasdf.png',
+            'img/1/domainc/ijnijn.png',
+            // 'img/1/domainc/iuniun.png',
+            'img/1/domainc/jhbjhb.png',
+            'img/1/domainc/kbkjbkjb.png',
+            'img/1/domainc/kjnkjn.png',
+            'img/1/domainc/kjnkjnkjn.png',
+            'img/1/domainc/kjnkn.png',
+            'img/1/domainc/kjoi.png',
+            'img/1/domainc/kmj.png',
+            'img/1/domainc/lkmlk.png',
+            'img/1/domainc/oijoij.png',
+            'img/1/domainc/oijoikm.png',
+            // 'img/1/domainc/oijpij.png',
+            'img/1/domainc/okmokm.png',
+            // 'img/1/domainc/okmokmim.png',
+            'img/1/domainc/pokpok.png',
+            'img/1/domainc/qwerqwer.png',
+            'img/1/domainc/qwerqwre.png',
+            'img/1/domainc/sdfgs.png',
+            'img/1/domainc/sdfgsdg.png',
+            'img/1/domainc/shshf.png',
+            'img/1/domainc/ubuybuy.png',
+            'img/1/domainc/wertwert.png',
+            'img/1/domainc/wgwgwgwre.png'
+    ];
+
+    $scope.flickityOptions = {
+        cellSelector: '.demo__slide',
+        resize: true,
+        setGallerySize: false,
+        friction: .8,
+        selectedAttraction: .1,
+        wrapAround: true,
+        imagesLoaded: true
+    };
+
+
+    const settle = $rootScope.$on('Flickity:demoId:settle', (event, data) => {
+        //console.log('Flickity just settled!');
+    });
+
+
+
+        });
+
+
+
+
+        generalApp.controller('page2Ctrl', function ($scope, FlickityService,$rootScope){
+
+            $scope.slides = [
+              'img/1/other/2girl3.png',
+              'img/1/other/bphage\ copy.png',
+              'img/1/other/cantor2.png',
+              'img/1/other/f.JPG',
+              'img/1/other/6me2\ copy.png',
+              'img/1/other/hilbert5.png',
+              'img/1/other/karyogray.png',
+              'img/1/other/m.jpg',
+              'img/1/other/marine2.png',
+              'img/1/other/marine7.png',
+              'img/1/other/marine17.png',
+              'img/1/other/marine18\ copy.png',
+              'img/1/other/marine20.png',
+              'img/1/other/marine28.png',
+              'img/1/other/marine31.png',
+              // 'img/1/other/marine32.png',
+              'img/1/other/marine46.png',
+              'img/1/other/marines35\ copy.png',
+              'img/1/other/marines39.png',
+              'img/1/other/marines47.png',
+              'img/1/other/marines50\ copy.png',
+              'img/1/other/marines51\ copy\ 2.png',
+              'img/1/other/qwer4.png',
+              'img/1/other/qwer5.png',
+              'img/1/other/qwer6.png',
+              'img/1/other/shiftimage12\ copy.png',
+              'img/1/other/tigre7-2.jpg',
+              'img/1/other/wertpng.png',
+              'img/1/other/WP_001134\ copy.jpg'
+
+      ];
+
+      $scope.flickityOptions = {
+          cellSelector: '.demo__slide',
+          resize: true,
+          setGallerySize: false,
+          friction: .8,
+          selectedAttraction: .1,
+          wrapAround: true,
+          imagesLoaded: true
+      };
+
+
+      const settle = $rootScope.$on('Flickity:demoId:settle', (event, data) => {
+          //console.log('Flickity just settled!');
+      });
+
+
+
+          });
+
+          generalApp.controller('page3Ctrl', function ($scope, FlickityService,$rootScope){
+
+              $scope.slides = [
+
+
+                'img/1/dynamic/COMP.png',
+                'img/1/dynamic/cosine3\ copy.png',
+                'img/1/dynamic/d6.png',
+                'img/1/dynamic/COMP_TITLE\ -11\ copy.png',
+                'img/1/dynamic/eye2.png',
+                // 'img/1/dynamic/henen6\ copy\ 2.png',
+                'img/1/dynamic/henen6\ copy.png',
+                'img/1/dynamic/henon\ copy.png',
+                'img/1/dynamic/henon2\ copy\ 2.png',
+                // 'img/1/dynamic/henon2\ copy.png',
+                'img/1/dynamic/henon3\ copy.png',
+                'img/1/dynamic/henon5\ copy.png',
+                'img/1/dynamic/henon12\ copy.png',
+                'img/1/dynamic/henon13\ copy.png',
+                'img/1/dynamic/henon14\ copy.png',
+                'img/1/dynamic/henon15\ copy.png',
+                'img/1/dynamic/henon16.png',
+                'img/1/dynamic/henon17\ copy.png',
+                'img/1/dynamic/jong1.png',
+                'img/1/dynamic/jong2.png',
+                'img/1/dynamic/jong4.png',
+                'img/1/dynamic/jong5.png',
+                'img/1/dynamic/jong6.png',
+                'img/1/dynamic/limit2.png',
+                'img/1/dynamic/lissajoux\ copy.png',
+                'img/1/dynamic/n3.png',
+                'img/1/dynamic/n6.png',
+                'img/1/dynamic/nep.png',
+                'img/1/dynamic/w4.png',
+                'img/1/dynamic/whate3.png'
+
+          ];
+
+          $scope.flickityOptions = {
+            cellSelector: '.demo__slide',
+            resize: true,
+            setGallerySize: false,
+            friction: .8,
+            selectedAttraction: .1,
+            wrapAround: true,
+            imagesLoaded: true
+          };
+
+
+          const settle = $rootScope.$on('Flickity:demoId:settle', (event, data) => {
+            //console.log('Flickity just settled!');
+          });
+
+
+
+            });
+
+
+
+    </script>
+
+
+<!-- end Angular -->
+
+
+<!--
+<link rel="stylesheet" href="style2.css">
+-->
+
+    <style media="screen">
+
+
+        .artist-profile h3{ font-size: 33px;}
+        .carousel-slide figcaption {
+          font-size: 10px;
+        }
+
+
+        .artist-profile {
+        padding-top: 4rem;
+    }
+    @media (max-width: 770px){
+    section {
+        padding: 3rem 2rem;
+    }
+    }
+
+    section {
+        margin: 0 auto;
+        max-width: 87.5rem;
+        position: relative;
+    }
+
+        /* external css: flickity.css */
+
+        .flickity-prev-next-button {
+      display: none;
+    }
+
+        .carousel-slide figcaption {
+        margin-top: 0.5rem;
+        margin-left: 4.5rem;
+
+    }
+
+    .carousel-slide img {
+        max-height: 800px;
+        max-width: none;
+    }
+    .carousel-slide {
+        margin: 0 1rem 2rem 1rem;
+    }
+        /* inherit height from parent */
+    .carousel { height: 100%; }
+
+    .carousel-cell { height: 100% }
+
+    /* move page dots into carousel */
+    .flickity-page-dots { display: none;}
+
+    .flickity-viewport {
+        /*overflow: scroll;*/
+        position: relative;
+        height: 100%;
+    }
+
+
+        .flickity-slider {
+        position: relative;
+        width: 100%;
+        height:100%;
+        height: 400px;
+
+
+    }
+
+
+    .carousel-cell{
+        position: absolute;
+        left: 423px;
+    }
+
+    .flickity-slider img {
+      display: block;
+      height: 400px;
+      min-width: 100px;
+
+      margin-right: 2.3576515979%;
+    }
+
+    @media screen and ( min-width: 770px ) {
+      .flickity-slider img {
+        height: 400px;
+
+        min-width: 100px;
+
+        margin-right: 2.3576515979%;
+      }
+    }
+
+
+        /*@media (min-width: 770px){
+    .article-artists figure, .article-artists img {
+        display: none;
+    }
+    }*/
+
+    @media (max-width: 770px){
+    .artists-preview  {
+    display: none;
+    float: left;
+    }
+    }
+
+    @media (max-width: 770px){
+    .artists-artist figure {
+        padding-bottom: 70%;
+        background-size: cover;
+        margin-bottom: 1rem;
+    }
+    }
+
+    @media (max-width: 770px){
+    .artists-artist:nth-child(2n) {
+        margin-right: 0;
+    }
+    }
+
+    @media (max-width: 770px){
+    .artists-artist {
+
+        display: block;
+        margin-right: 2.3576515979%;
+
+    }
+    }
+
+
+
+    body{
+    /*margin: 3rem 4rem 4rem 3rem;*/
+    margin: 0rem 0rem 0rem 0rem;
+    }
+
+
+
+
+    figure {
+          display: block;
+          margin: 0;
+
+          /*height: 400px;*/
+
+
+
+    }
+
+
+
+    article{
+      position: absolute;
+      margin-top:4rem;
+      margin-bottom: 4rem;
+    }
+        .artists-preview {
+            /*position: absolute;*/
+
+            right: 4rem;
+            top: 5rem;
+            bottom: 5rem;
+            left: 23%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            width: 300px;
+            height: 400px;
+        }
+
+    a {
+        color: rgba(175, 86, 11, 0.82);
+        color: rgba(79, 172, 199, 0.8);
+        color: rgb(218, 218, 218);
+        color:rgba(33, 32, 32, 0.31);
+        text-decoration: none;
+
+    }
+
+    a:hover, a:focus {
+      color: rgba(79, 172, 199, 0.8);
+      text-decoration: none;
+
+    }
+
+    .img-center {margin:0 auto;}
+
+    .img-responsive {
+        margin: 0 auto;
+    }
+
+    .artist-links {
+        margin-left: auto;
+        margin-right: auto;
+        width: 12em
+    }
+
+    ul, li {
+      /*float: left;*/
+        /*list-style: none;*/
+        margin-left: 15px;
+
+
+    }
+
+    nav {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    nav ul {
+      white-space: nowrap;
+    }
+
+    nav li{
+      /*
+      display: inline-block;
+      margin: 0 0.8rem 0 0;
+      padding: 0.5rem 0;
+      */
+    }
+
+
+
+    nav .active > a,
+     nav .active > a:hover,
+     nav .active > a:focus {
+          border-bottom: 0.25rem solid rgba(79, 172, 199, 0.8);
+          /*display:inline;*/
+              padding: 10px 9px;
+
+     }
+
+
+    .nav > li > a,.nav > li > a:focus,.nav > li > a:active {
+      /*
+    position: relative;
+    display:inline;
+    */
+    /*display:inline;*/
+        padding: 10px 9px;
+    }
+    .nav > li > a:hover, .nav > li > a:focus {
+      /*display:inline;*/
+          padding: 10px 9px;
+    /*
+        text-decoration: none;
+        background-color: white;
+        color: black;
+    */
+
+
+    }
+
+    @media (min-width: 770px) {
+      nav {
+        text-align: left;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .header-nav-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        height: 5.7rem;
+      }
+      .header-nav {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        right: 2rem;
+      }
+    }
+
+    .header{
+      width: 100%;
+      position: relative;
+       min-height: 100%;
+       left: 0px;
+       margin-left: 0;
+       right: 0px;
+       margin-right: 0;
+       height: 300px;
+        margin-bottom: 60px;
+    }
+
+    @media (max-width: 700px){
+      .header {
+        height: 200px;
+      }
+    }
+
+
+    @media (max-width: 770px) {
+      nav {
+        padding: 2rem;
+      }
+    }
+
+    @media (min-width: 770px) {
+      .logo-wrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    @media (max-width: 770px) {
+      .logo-wrap {
+        margin: 0 2rem;
+      }
+    }
+
+
+
+    @media (min-width: 770px) {
+      .logo  a {
+        padding-bottom: 9%;
+        width: 20rem;
+        background-size: contain;
+        background-position: 0 0;
+        padding: 3rem 2rem;
+      }
+    }
+
+    @media (max-width: 770px) {
+      .logo  a {
+        width: 100%;
+        max-width: 450px;
+        padding-bottom: 10%;
+        background-size: contain;
+        background-position: 0 0;
+        margin-top: 60px;
+        padding: 3rem 2rem;
+      }
+    }
+
+    .logo  a {
+        display: inline-block;
+        background-image: url(img/shiftmatheux.png);
+        background-repeat: no-repeat;
+
+    }
+
+    .logo  span {
+      display: none;
+    }
+
+
+
+    @media (min-width: 770px) {
+      .logo2  a {
+        padding-bottom: 9%;
+        width: 20rem;
+        background-size: contain;
+        background-position: 0 0;
+      }
+    }
+
+    @media (max-width: 770px) {
+      .logo2  a {
+        width: 100%;
+        max-width: 450px;
+        padding-bottom: 10%;
+        background-size: contain;
+        background-position: 0 0;
+      }
+    }
+
+    .logo2  a {
+        display: inline-block;
+        background-image: url(img/js.png);
+        background-repeat: no-repeat;
+    }
+
+    .logo2  span {
+      display: none;
+    }
+
+
+
+
+    li a {
+        color: black;
+        color: rgb(204, 201, 201);
+    }
+
+    .nav > li > a:hover, .nav > li > a:focus {
+        text-decoration: none;
+        background-color: white;
+
+
+    }
+
+    .flickity-viewport {
+        overflow: hidden;
+      }
+
+
+    p {margin: 0 0 3px;}
+
+    body,
+    button,
+    input,
+    select,
+    textarea {
+        /*font-family: Lato, Avenir, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+        font-size: 1.725rem;
+        /*text-align: justify;*/
+        color: #3A3B3C;
+        /*font-weight: 300;*/
+        /*font-size: 1.125rem;*/
+        line-height: 1.3;
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans',sans-serif;
+
+    }
+
+
+    .share-icons-body{float:right;
+          margin-top: 80px;
+    }
+
+
+
+    #container {
+        -moz-column-count:2;
+        -webkit-column-count:2;
+        column-count:2;
+        height: 145px;
+        width: 80px;
+    }
+
+    //////////////////////////
+    .artist-profile h3{ font-size: 33px;}
+    .carousel-slide figcaption {
+      font-size: 10px;
+    }
+
+
+    .artist-profile {
+    padding-top: 4rem;
+    }
+    @media (max-width: 760px){
+    section {
+    padding: 3rem 2rem;
+    }
+    }
+
+    section {
+    margin: 0 auto;
+    max-width: 87.5rem;
+    position: relative;
+    }
+
+    /* external css: flickity.css */
+
+    .flickity-prev-next-button {
+    display: none;
+    }
+
+    .carousel-slide figcaption {
+    margin-top: 0.5rem;
+    margin-left: 4.5rem;
+
+    }
+
+    .carousel-slide img {
+    max-height: 800px;
+    max-width: none;
+    }
+    .carousel-slide {
+    margin: 0 1rem 2rem 1rem;
+    }
+    /* inherit height from parent */
+    .carousel { height: 100%; }
+
+    .carousel-cell { height: 100% }
+
+    /* move page dots into carousel */
+    .flickity-page-dots { display: none;}
+
+    .flickity-viewport {
+    /*overflow: scroll;*/
+    position: relative;
+    height: 100%;
+    }
+
+
+    .flickity-slider {
+    position: relative;
+    width: 100%;
+    height:100%;
+    height: 400px;
+
+
+    }
+
+
+    .carousel-cell{
+    position: absolute;
+    left: 423px;
+    }
+
+    .flickity-slider img {
+    display: block;
+    height: 400px;
+    min-width: 100px;
+
+    margin-right: 2.3576515979%;
+    }
+
+    @media screen and ( min-width: 768px ) {
+    .flickity-slider img {
+    height: 400px;
+
+    min-width: 100px;
+
+    margin-right: 2.3576515979%;
+    }
+    }
+
+
+    /*@media (min-width: 768px){
+    .article-artists figure, .article-artists img {
+    display: none;
+    }
+    }*/
+
+    @media (max-width: 768px){
+    .artists-preview  {
+    display: none;
+    float: left;
+    }
+    }
+
+    @media (max-width: 768px){
+    .artists-artist figure {
+    padding-bottom: 70%;
+    background-size: cover;
+    margin-bottom: 1rem;
+    }
+    }
+
+    @media (max-width: 768px){
+    .artists-artist:nth-child(2n) {
+    margin-right: 0;
+    }
+    }
+
+    @media (max-width: 768px){
+    .artists-artist {
+
+    display: block;
+    margin-right: 2.3576515979%;
+
+    }
+    }
+
+
+
+
+
+
+
+    figure {
+      display: block;
+      margin: 0;
+
+      /*height: 400px;*/
+
+
+
+    }
+
+
+
+    article{
+    position: absolute;
+    margin-top:4rem;
+    margin-bottom: 4rem;
+    }
+    .artists-preview {
+        /*position: absolute;*/
+
+        right: 4rem;
+        top: 5rem;
+        bottom: 5rem;
+        left: 23%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 300px;
+        height: 400px;
+    }
+
+    a {
+    color: rgba(175, 86, 11, 0.82);
+    color: rgba(79, 172, 199, 0.8);
+    color: rgb(218, 218, 218);
+    color:rgba(33, 32, 32, 0.31);
+    text-decoration: none;
+
+    }
+
+    a:hover, a:focus {
+    color: rgba(79, 172, 199, 0.8);
+    text-decoration: none;
+
+    }
+
+    .img-center {margin:0 auto;}
+
+    .img-responsive {
+    margin: 0 auto;
+    }
+
+    .artist-links {
+    margin-left: auto;
+    margin-right: auto;
+    width: 12em
+    }
+
+    .navul {
+    float: left;
+    list-style: none;
+
+    }
+
+    /*ul.a {
+        list-style-type: circle;
+    }*/
+
+    .centerimgcontainer {
+        /*width: 550px;*/
+        margin-left: auto;
+        margin-right: auto;
+        width: 30em;
+        height: auto;
+        /*margin: 30px auto 30px;*/
+        display: block;
+        margin: 30px;
+    }
+
+    </style>
+
+  </head>
+
+  <header class="header" style="background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(img/mm.png) 29.9% 29.9% / cover;" role="banner">
+
+   </header>
+   <nav class="navbar">
+   <div class="container">
+
+
+
+       <ul class="nav navbar-nav navbar-left navul">
+
+           <li class="navul" ng-class="{active:isActive('/')}"><a href="#/">Home</a></li>
+           <li class="navul" ng-class="{active:isActive('/posts')}"><a href="#/posts">Gallery</a></li>
+           <!-- <li ng-class="{active:isActive('/about')}"><a href="#/about">About</a></li> -->
+           <!-- <li ><a href="test2.html">Test</a></li> -->
+           <li class="navul" ng-class="{active:isActive('/contact')}"><a href="#/contact">Contact</a></li>
+
+       </ul>
+
+       <div class="navbar-header navbar-right logo">
+           <a class="navbar-brand" href="#/">
+
+             <!--<img style="float: left;" src="img/r.png">-->
+             <span>shiftshuffle</span>
+
+           </a>
+
+      </div>
+
+      <div class="navbar-header navbar-right logo2" style="width:60px;">
+          <a class="navbar-brand" href="#/">
+
+            <!--<img style="float: left;" src="img/r.png">-->
+            <span>shiftshuffle</span>
+
+          </a>
+
+      </div>
+
+
+
+
+
+
+   </div>
+   </nav>
+
+
+<body ng-controller="generalCtrl">
+
+
+
+
+
+
+
+       <div ng-view>
+       </div>
+
+
+
+
+       <!-- <article>
+
+
+
+
+
+
+
+   <div class="container">
+     <div class="row">
+       <div class="col">
+         1 of 3
+         <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/paddingoracle/" rel="bookmark" title="Link to Padding Oracle Attack">Padding Oracle Attack</a></h2>
+         <span class="post-date">Published Jun 20, 2016</span>
+         <p></p>
+         <a class="moretag" href="http://shiftshuffle.github.io/blog/post/paddingoracle/">Continue reading &#8614;</a>
+         <hr class="divider">
+
+       </div>
+       <div class="col">
+         1 of 3
+
+         <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/map/" rel="bookmark" title="Link to Maps">Maps</a></h2>
+         <span class="post-date">Published Jun 20, 2016</span>
+         <p></p>
+
+         <hr class="divider">
+
+
+       </div>
+       <div class="col">
+         1 of 3
+
+         <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/map/" rel="bookmark" title="Link to Maps">Maps</a></h2>
+         <span class="post-date">Published Jun 20, 2016</span>
+         <p></p>
+
+         <hr class="divider">
+       </div>
+     </div>
+</div>
+
+
+
+   <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/map/" rel="bookmark" title="Link to Maps">Maps</a></h2>
+   <span class="post-date">Published Jun 20, 2016</span>
+   <p></p>
+
+   <hr class="divider">
+
+   <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/map/" rel="bookmark" title="Link to Maps">Maps</a></h2>
+   <span class="post-date">Published Jun 20, 2016</span>
+   <p></p>
+
+   <hr class="divider">
+
+   <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/map/" rel="bookmark" title="Link to Maps">Maps</a></h2>
+   <span class="post-date">Published Jun 20, 2016</span>
+   <p></p>
+
+   <hr class="divider">
+
+   <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/map/" rel="bookmark" title="Link to Maps">Maps</a></h2>
+   <span class="post-date">Published Jun 20, 2016</span>
+   <p></p>
+
+   <hr class="divider">
+
+   <h2 class="post-title"><a href="http://shiftshuffle.github.io/blog/post/map/" rel="bookmark" title="Link to Maps">Maps</a></h2>
+   <span class="post-date">Published Jun 20, 2016</span>
+   <p></p>
+
+   <hr class="divider">
+   </article> -->
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  <span style="float: left; margin-left: .6em;">made with </span>
+  <div style="width:20px; float: left; margin-left: .6em;">
+      <svg viewBox="0 0 100 100">
+      <path fill="#BE1637" stroke="#fff"
+        d="M96.333,18.385c-2.396-6.01-7.205-11.064-13.857-14.194
+        C76.595,1.423,70.26,1.09,64.501,2.782
+        C58.743,4.472,53.566,9.081,50,14.408
+        c-3.565-5.327-8.743-9.936-14.5-11.626
+        C29.743,1.09,23.406,1.423,17.526,4.191
+        c-6.652,3.128-11.46,8.184-13.858,14.194
+        c-2.396,6.01-2.407,12.987,0.614,19.927
+        C10.743,53.154,49.795,87.993,50,88.588
+        c0.205-0.595,39.258-35.434,45.718-50.276
+        C98.74,31.371,98.729,24.395,96.333,18.385z" />
+    </svg>
+  </div>
+
+  <br>
+  <br>
+
+<span style="float: left; margin-left: .6em;"> by:  </span>  <a style="float: left; margin-left: .6em;" href="#">
+  shiftshuffle</a>
+-->
+
+
+
+
+
+
+
+<!--
+      <div ng-repeat="g in general" class="col-md-4 col-sm-4 col-xs-12 profile_details">
+
+      <div class="well profile_view">
+          <div class="col-sm-12">
+            <h4 class="brief"><i>{{g["id"]}}</i></h4>
+            <div class="left col-xs-7">
+              <h2>{{g["first_name"]}}</h2>
+
+              <ul class="list-unstyled">
+                <li><i class="fa fa-building"></i> <strong>Direccion:</strong> {{g["img_preview"]}} </li>
+                <li><i class="fa fa-phone"></i> <strong>Tel. fijo: </strong> {{g["img_preview"]}} </li>
+                <li><i class="fa fa-phone"></i> <strong>Cel.: </strong>{{g["tags"]}} </li>
+              </ul>
+            </div>
+            <div class="right col-xs-5 text-center">
+              <img src="images/user.png" alt="" class="img-circle img-responsive">
+            </div>
+          </div>
+          <div class="col-xs-12 bottom text-center">
+            <div class="col-xs-12 col-sm-6 emphasis">
+              <p class="ratings">
+                <a>4.0</a>
+                <a href="#"><span class="fa fa-star"></span></a>
+                <a href="#"><span class="fa fa-star"></span></a>
+                <a href="#"><span class="fa fa-star"></span></a>
+                <a href="#"><span class="fa fa-star"></span></a>
+                <a href="#"><span class="fa fa-star-o"></span></a>
+              </p>
+            </div>
+            <div class="col-xs-12 col-sm-6 emphasis">
+              <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
+                </i> <i class="fa fa-comments-o"></i> </button>
+              <button type="button" class="btn btn-primary btn-xs">
+                <i class="fa fa-user"> </i> View Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    -->
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

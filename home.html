@@ -1,0 +1,91 @@
+<article class ="article-artists anim-in-out anim-slide-below-fade">
+
+
+
+
+
+<!-- Page Content -->
+    <div class="container">
+
+      <div class="info">
+        <section class="info">
+
+        <div class="row" style="margin-left: 10px;">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Articles</h1>
+            </div>
+
+
+
+            <div ng-repeat="g in general"  class="col-lg-4 col-md-4 col-sm-6 col-xs-12 thumb">
+              <br>
+              <br>
+              <a href="{{g.id}}">
+
+
+
+
+                    <img class="img-responsive" src="{{g.img_preview}}" alt="" style="height:200px;" >
+                  </a>
+                  <figcaption>
+                    <a href="{{g.id}}">
+                    <h5>{{g.first_name}} <strong style="color: black;">{{g.last_name}}</strong></h5>
+                  <h4>
+                      {{g.description}}
+                  </h4>
+
+
+
+                  </a>
+                  <time class="ng-binding">{{g.date}}</time>
+                </figcaption>
+
+
+                  <hr class="divider">
+                  <br>
+                  <br>
+
+            </div>
+
+
+
+
+
+
+
+            </div>
+
+            <!-- <p style="line-height:1.5">
+                <span style="font-size:12pt">The quick brown fox jumps over the lazy dog.</span><br />
+                <span style="font-size:24pt">The quick brown fox jumps over the lazy dog.</span>
+            </p> -->
+
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                  <figure class="author-bio">
+                  <img class="bio-image" src="img/2.jpg" />
+
+
+                  <figcaption class="bio-text"> "La pensée n'est qu'un écliar au milieu d'une longue nuit. Mais c'est cet éclair qui est tout." <br /><br />
+                  "Thought is only a flash in the middle of a long night. But this flash means everything. " <br /><br />
+                  - Henri Poincaré
+                  </figcaption>
+                  </figure>
+                  <hr>
+                </div>
+            </div>
+        </footer>
+
+      </section>
+    </div>
+
+    </div>
+    <!-- /.container -->
+
+
+</article>
